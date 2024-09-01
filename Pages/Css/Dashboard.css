@@ -1,0 +1,105 @@
+.dash-container{
+    display: flex;
+}
+
+.left-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 100vh;
+    width: 20vw;
+    justify-content: space-between;
+}
+.left-container h1{
+    margin: 0px 10px 0px 20px;
+    font-family: "Jomhuria";
+    font-size: 100px;
+    font-weight: 400;
+}
+
+.left-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 30px;
+}
+ 
+.left-menu button, .left-bottom button{
+    font-weight: 600;
+    font-size: 25px;
+    border-style: none;
+    margin: 0 10px 0 10px;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 15vw;
+    padding: 10px;
+}
+
+.left-menu button:hover, .left-bottom button:hover{
+    box-shadow: rgba(196, 209, 209, 0.5) 0px 1px 40px;
+}
+
+.left-bottom p{
+    margin-left: 40px;
+}
+
+.left-bottom{
+    margin-bottom: 30px;
+}
+
+.right-container{
+    background-color: #EDEDED;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+}
+
+.head-stats{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.head-stats >div >p {
+    border: 1px  black;
+    background-color: white;
+    padding: 15px;
+    font-size: 25px;
+    margin-top: 60px;
+    font-weight: 500;
+    width: 18vw;
+    border-radius: 10px;
+}
+
+.span-heading{
+    font-size: 35px;
+}
+
+.head-stats div:nth-child(1){
+    color: rgb(0, 0, 0);
+}
+.head-stats div:nth-child(2){
+    color: rgb(26, 165, 26);
+}
+.head-stats div:nth-child(3){
+    color: blueviolet;
+}
+
+.bottom-stats{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+.box{
+    margin-top: 30px;
+    height: 75px;
+    width: 160px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.box span{
+    padding: 10px 0 0 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
