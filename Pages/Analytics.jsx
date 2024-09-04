@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import './Css/Dashboard.css'
 import './Css/Popup.css'
 import {useNavigate} from 'react-router-dom'
-import {Popup} from './Popup.jsx'
+import {Popup} from '../Components/Popup.jsx'
 
 const Analytics = () => {
     const navigate = useNavigate()

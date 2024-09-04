@@ -17,6 +17,7 @@ const Home = () => {
     })
 
     const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const handleButtonClick = (buttonName) => {
         setActiveButton(buttonName);
@@ -141,6 +142,7 @@ const Home = () => {
     
         try {
             if (visiblity === 'Sign Up') {
+                setLoading(true)
                 const response = await signup({ name, email, password, password2 });
                 console.log(response)
                 if (response.status === 201) {
@@ -167,41 +169,44 @@ const Home = () => {
             toast.error("Something went wrong try again")
             setError("An error occurred. Please try again later.");
         }
+        finally{
+            setLoading(false)
+        }
     }
 
     return (
-        <>
-            <div className="container">
-                <div className="title"><h1>QUIZZIE</h1></div>
-                <div className="signup-signin">
-                    <button
-                        className={activeButton === 'Sign Up' ? 'active' : ''}
-                        onClick={() => handleButtonClick('Sign Up')}
-                    >Sign Up</button>
-                    <button
-                        className={activeButton === 'Log In' ? 'active' : ''}
-                        onClick={() => handleButtonClick('Log In')}
-                    >Log In</button>
-                </div>
-                <div className="value-box">
-                    <form onSubmit={handleSubmit}>
-                        {visiblity === 'Log In' ? <></> : <label htmlFor="name"> Name
-                            <input type="text" onChange={handleChange} placeholder={value.name == '' ? error : 'Enter your name'} name="name" id="name" value={value.name} />
-                        </label>}
-
-                        <label htmlFor="email">Email
-                            <input type="email" onChange={handleChange} placeholder={value.email == '' ? error : 'Enter your email'} name="email" id="email" value={value.email} />
-                        </label>
-                        <label htmlFor="password">Password
-                            <input type="password" onChange={handleChange} placeholder={value.password == '' ? error : 'Enter your your password'} name="password" id="password" value={value.password} />
-                        </label>
-                        {visiblity === 'Log In' ? <></> : <label htmlFor="password2">Confirm password
-                            <input type="password" onChange={handleChange} placeholder={value.password2 == '' ? error : 'Re-enter your password'} name="password2" id="password2" value={value.password2} /><br />
-                        </label>}
-                        <button className='submit-button'>{visiblity}</button>
-                    </form>
-                </div>
+        <> {loading ? <h1>Loading...</h1> : <div className="container">
+            <div className="title"><h1>QUIZZIE</h1></div>
+            <div className="signup-signin">
+                <button
+                    className={activeButton === 'Sign Up' ? 'active' : ''}
+                    onClick={() => handleButtonClick('Sign Up')}
+                >Sign Up</button>
+                <button
+                    className={activeButton === 'Log In' ? 'active' : ''}
+                    onClick={() => handleButtonClick('Log In')}
+                >Log In</button>
             </div>
+            <div className="value-box">
+                <form onSubmit={handleSubmit}>
+                    {visiblity === 'Log In' ? <></> : <label htmlFor="name"> Name
+                        <input type="text" onChange={handleChange} placeholder={value.name == '' ? error : 'Enter your name'} name="name" id="name" value={value.name} />
+                    </label>}
+
+                    <label htmlFor="email">Email
+                        <input type="email" onChange={handleChange} placeholder={value.email == '' ? error : 'Enter your email'} name="email" id="email" value={value.email} />
+                    </label>
+                    <label htmlFor="password">Password
+                        <input type="password" onChange={handleChange} placeholder={value.password == '' ? error : 'Enter your your password'} name="password" id="password" value={value.password} />
+                    </label>
+                    {visiblity === 'Log In' ? <></> : <label htmlFor="password2">Confirm password
+                        <input type="password" onChange={handleChange} placeholder={value.password2 == '' ? error : 'Re-enter your password'} name="password2" id="password2" value={value.password2} /><br />
+                    </label>}
+                    <button className='submit-button'>{visiblity}</button>
+                </form>
+            </div>
+        </div>}
+            
         </>
     )
 }

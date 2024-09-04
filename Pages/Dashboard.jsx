@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import './Css/Dashboard.css'
-import {Popup} from './Popup.jsx';
+import {Popup} from '../Components/Popup.jsx';
 
 const Dashboard = () => {
 
